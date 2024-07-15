@@ -18,15 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function formatTextForWhatsApp(text) {
     // Substitui quebras de linha (\n) por %0A
-    return encodeURIComponent(text.trim().replace(/\n/g, '%0A'));
+    return encodeURIComponent(text.trim().replace(/\n/g, '\n'));
   }
 
-  confirmButton.addEventListener('click', function() {
+  confirmButton.onclick = function() {
     const inputValue = inputElement.value;
     const filteredValue = filterNumbers(inputValue);
     const initialTextValue = initialText.value;
     const formattedText = formatTextForWhatsApp(initialTextValue);
     const message = formattedText.length > 0 ? `/?text=${formattedText}` : "";
     openLinkInNewWindow(`https://wa.me/${filteredValue}${message}`);
-  });
+  };
 });
