@@ -16,12 +16,17 @@ document.addEventListener('DOMContentLoaded', function() {
     window.open(url, '_blank', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=600');
   }
 
+  function formatTextForWhatsApp(text) {
+    // Substitui quebras de linha (\n) por %0A
+    return encodeURIComponent(text.trim().replace(/\n/g, '%0A'));
+  }
 
   confirmButton.addEventListener('click', function() {
     const inputValue = inputElement.value;
     const filteredValue = filterNumbers(inputValue);
-    const filteredText = initialText.value.trim()
-    const message = filteredText.length>0 ? `/?text=${filteredText}` : ""
+    const initialTextValue = initialText.value;
+    const formattedText = formatTextForWhatsApp(initialTextValue);
+    const message = formattedText.length > 0 ? `/?text=${formattedText}` : "";
     openLinkInNewWindow(`https://wa.me/${filteredValue}${message}`);
   });
 });
