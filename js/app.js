@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const initialTextValue = initialText.value;
     const formattedText = formatTextForWhatsApp(initialTextValue);
     
-    const message = formattedText.length > 0 ? `/?text=${formattedText}` : "";
-    openLinkInNewWindow(`https://wa.me/${filteredValue}${message}`);
+    // const message = formattedText.length > 0 ? `/?text=${formattedText}` : "";
+    // openLinkInNewWindow(`https://wa.me/${filteredValue}${message}`);
     
-    // const message = formattedText.length > 0 ? `&text=${formattedText}` : "";
-    // openLinkInNewWindow(`https://web.whatsapp.com/send?phone=${filteredValue}${message}`);
+    const message = formattedText.length > 0 ? `&text=${formattedText}` : "";
+    openLinkInNewWindow(`https://web.whatsapp.com/send?phone=${filteredValue}${message}`);
   };
 });
